@@ -19,6 +19,7 @@ namespace Consola_1
             {
                 Nombre_Comida = c.Nombre_Comida,
                 Descripcion_Comida = c.Descripcion_Comida,
+                precio=c.precio
             };
             //Añade al contexto
             _context.Comidas.Add(miComida);
@@ -33,6 +34,7 @@ namespace Consola_1
             {
                 Console.Write(ani.id_Comida + " ");
                 Console.Write(ani.Nombre_Comida + " ");
+                Console.Write(ani.precio + " ");
                 Console.WriteLine(ani.Descripcion_Comida);
             }
         }
@@ -44,6 +46,7 @@ namespace Consola_1
             {
                 q.Nombre_Comida = p.Nombre_Comida;
                 q.Descripcion_Comida = p.Descripcion_Comida;
+                q.precio = p.precio;
             }
         }
         public bool EliminarComida(int id)

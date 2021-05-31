@@ -12,5 +12,7 @@ namespace Consola_1.DTO
         public int Peso { get; set; }
         public int TipoRaza { get; set; }
         public string Color { get; set; }
+        public string descripcion { get; set; }
+        public float precio { get; set; }
     }
 }

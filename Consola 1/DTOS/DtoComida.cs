@@ -8,5 +8,6 @@ namespace Consola_1.DTOS
     {
         public string Nombre_Comida { get; set; }
         public string Descripcion_Comida { get; set; }
+        public float precio { get; set; }
     }
 }

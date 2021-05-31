@@ -13,43 +13,52 @@ namespace Consola_1
         {
             _context = context;
         }
-        public bool CreateOrdenar_Pedido(DtoOrdenar_Pedido c)
+        public bool CreateLinea_Pedido(DtoLinea_Pedido c)
         {
-            Animal.ordenar_Pedido miOrden = new Animal.ordenar_Pedido()
+            Animal.Linea_Pedido miLinea = new Animal.Linea_Pedido()
             {
                 id_Producto = c.id_Producto,
+                id_Pedido=c.id_Pedido,
+                Cantidad=c.Cantidad,
+                PrecioTotal =c.PrecioTotal
             };
             //Añade al contexto
-            _context.Ordenar_Pedidos.Add(miOrden);
+            _context.Linea_Pedidos.Add(miLinea);
             //Guarda en BBDD
             _context.SaveChanges();
             return true;
         }
-        public void listarOrdenarPedidoConsola()
+        public void listarLineaPedidoConsola()
         {
-            var list = _context.Ordenar_Pedidos;
+            var list = _context.Linea_Pedidos;
             foreach (var ani in list)
             {
-                Console.Write(ani.id_Ordernar + " ");
+                Console.Write(ani.id_LineaPedido + " ");
+                Console.Write(ani.Cantidad+ " ");
+                Console.Write(ani.id_Pedido + " ");
+                Console.Write(ani.PrecioTotal + " ");
                 Console.WriteLine(ani.id_Producto);
             }
         }
-        public void upDateOrdenarPedido(int id, DtoOrdenar_Pedido Op)
+        public void upDateLineaPedido(int id, DtoLinea_Pedido Op)
         {
-            var q = _context.Ordenar_Pedidos.Find(id);
+            var q = _context.Linea_Pedidos.Find(id);
             if (q == null) { Console.WriteLine("No encontrado el id esperado"); }
             else
             {
                 q.id_Producto = Op.id_Producto;
+                q.id_Pedido = Op.id_Pedido;
+                q.Cantidad = Op.Cantidad;
+                q.PrecioTotal = Op.PrecioTotal;
             }
         }
-        public bool EliminarOrdenarPedido(int id)
+        public bool EliminarLineaPedido(int id)
         {
-            var q = _context.Ordenar_Pedidos.Find(id);
+            var q = _context.Linea_Pedidos.Find(id);
             if (q == null) { Console.WriteLine("No encontrado el id esperado"); return false; }
             else
             {
-                _context.Ordenar_Pedidos.Remove(q);
+                _context.Linea_Pedidos.Remove(q);
                 _context.SaveChanges();
                 return true;
             }

@@ -6,20 +6,21 @@ using System.Text;
 
 namespace Consola_1
 {
-    class Producto
+    class ClaseProducto
     {
         protected DatabaseContext _context;
-        public Producto(DatabaseContext context)
+        public ClaseProducto(DatabaseContext context)
         {
             _context = context;
         }
-        public bool CreateProducto(DtoProducto p)
+        public bool CreateProducto(DtoClaseProducto p)
         {
-            Animal.Producto miProducto = new Animal.Producto()
+            Animal.Clase_Producto miProducto = new Animal.Clase_Producto()
             {
                 Tipo_Producto = p.Tipo_Producto,
                 Id_Asignado = p.Id_Asignado,
                 Descripcion_Producto = p.Descripcion_Producto,
+                Precio_Producto = p.Precio_Producto,
             };
             //Añade al contexto
             _context.Productos.Add(miProducto);
@@ -36,9 +37,10 @@ namespace Consola_1
                 Console.Write(ani.Tipo_Producto + " ");
                 Console.Write(ani.Id_Asignado + " ");
                 Console.WriteLine(ani.Descripcion_Producto);
+                Console.WriteLine(ani.Precio_Producto);
             }
         }
-        public void upDateProducto(int id, DtoProducto p)
+        public void upDateProducto(int id, DtoClaseProducto p)
         {
             var q = _context.Productos.Find(id);
             if (q == null) { Console.WriteLine("No encontrado el id esperado"); }
@@ -47,6 +49,7 @@ namespace Consola_1
                 q.Tipo_Producto = p.Tipo_Producto;
                 q.Id_Asignado = p.Id_Asignado;
                 q.Descripcion_Producto = p.Descripcion_Producto;
+                q.Precio_Producto = p.Precio_Producto;
             }
         }
         public bool EliminarProducto(int id)

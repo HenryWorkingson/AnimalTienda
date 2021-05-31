@@ -22,9 +22,8 @@ namespace Animal
         [Column(TypeName ="int")]
         [Required]
         public int tipo_Raza { get; set; }
-
         public string color { get; set; }
-
         public string descripcion { get; set; }
+        public float precio { get; set; }
     }
 }

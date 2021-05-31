@@ -21,17 +21,15 @@ namespace Consola_1
                 peso = animal.Peso,
                 color = animal.Color,
                 edad = animal.Edad,
-                tipo_Raza = animal.TipoRaza
+                tipo_Raza = animal.TipoRaza,
+                descripcion =animal.descripcion,
+                precio=animal.precio
             };
-
             //Añade al contexto
             _context.Animals.Add(miAnimal);
-
             //Guarda en BBDD
             _context.SaveChanges();
-
             return true;
-
         }
         public void listarAnimalConsola()
         {
@@ -43,6 +41,8 @@ namespace Consola_1
                 Console.Write(ani.edad + " ");
                 Console.Write(ani.color + " ");
                 Console.Write(ani.tipo_Raza + " ");
+                Console.Write(ani.precio + " ");
+                Console.Write(ani.descripcion + " ");
                 Console.WriteLine(ani.peso);
             }
         }
@@ -59,6 +59,8 @@ namespace Consola_1
                 Console.Write(q.edad + " ");
                 Console.Write(q.color + " ");
                 Console.Write(q.tipo_Raza + " ");
+                Console.Write(q.precio + " ");
+                Console.Write(q.descripcion + " ");
                 Console.WriteLine(q.peso);
             }
         }
@@ -73,6 +75,8 @@ namespace Consola_1
                 q.color = animal.Color;
                 q.edad = animal.Edad;
                 q.tipo_Raza = animal.TipoRaza;
+                q.descripcion = animal.descripcion;
+                q.precio = animal.precio;
                 listarIdAnimal(id);
             }
         }

@@ -15,11 +15,9 @@ namespace Animal
         [Column(TypeName = "varchar(200)")]
         [Required]
         public string Descripcion_Pedido { get; set; }
-        [Column(TypeName = "int")]
-        [Required]
-        public int Cantidad { get; set; }
-        [Column(TypeName = "int")]
-        [Required]
-        public int Id_Producto { get; set; }
+        public int Id_Cliente { get; set; }
+        public int Id_Tarjeta { get; set; }
+        public int Id_Direccion { get; set; }
+        public float Precio_Total { get; set; }
     }
 }

@@ -19,6 +19,7 @@ namespace Consola_1
             {
                 Nombre_Juguete = J.Nombre_Juguete,
                 Descripcion_Juguete = J.Descripcion_Juguete,
+                precio=J.precio
             };
             //Añade al contexto
             _context.Juguete.Add(miJuguete);
@@ -33,7 +34,7 @@ namespace Consola_1
             {
                 Console.Write(ani.id_Juguete + " ");
                 Console.Write(ani.Nombre_Juguete + " ");
-           
+                Console.Write(ani.precio + " ");
                 Console.WriteLine(ani.Descripcion_Juguete);
             }
         }
@@ -45,6 +46,7 @@ namespace Consola_1
             {
                 q.Nombre_Juguete = j.Nombre_Juguete;
                 q.Descripcion_Juguete = j.Descripcion_Juguete;
+                q.precio = j.precio;
             }
         }
         public bool EliminarJuguete(int id)

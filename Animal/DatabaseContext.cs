@@ -16,10 +16,15 @@ namespace Animal
         public DbSet<Animal> Animals { get; set; }
         public DbSet<Comida> Comidas { get; set; }
         public DbSet<Juguete> Juguete { get; set; }
-        public DbSet<ordenar_Pedido> Ordenar_Pedidos { get; set; }
+        public DbSet<Linea_Pedido> Linea_Pedidos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
-        public DbSet<Producto> Productos { get; set; }
+        public DbSet<Clase_Producto> Productos { get; set; }
         public DbSet<Raza> Razas { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Direccion_Envio> Direccion_Envios { get; set; }
+        public DbSet<TarjetaPago> TarjetaPagos { get; set; }
+        public DbSet<LineaDireccionCliente> LineasDireccionClientes { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

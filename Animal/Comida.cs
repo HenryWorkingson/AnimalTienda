@@ -18,6 +18,7 @@ namespace Animal
         [Column(TypeName = "varchar(200)")]
         
         public string Descripcion_Comida { get; set; }
-        
+
+        public float precio { get; set; }
     }
 }

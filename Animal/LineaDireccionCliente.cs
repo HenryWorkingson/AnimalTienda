@@ -6,16 +6,14 @@ using System.Text;
 
 namespace Animal
 {
-    [Table("Ordenar_Pedido")]
-    public class ordenar_Pedido
+    [Table("LineaDireccionCliente")]
+    public class LineaDireccionCliente
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id_Ordernar { get; set; }
-        [Column(TypeName = "int")]
-        [Required]
-        public int id_Producto { get; set; }
-
-        // precio, importe total, cantidad y etc...
+        public int id_DireccionCliente { get; set; }
+        public int Id_Cliente { get; set; }
+        public int Id_Direccion { get; set; }
+        public bool Ultima_Dir_Env { get; set; }
     }
 }

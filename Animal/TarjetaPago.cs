@@ -6,20 +6,20 @@ using System.Text;
 
 namespace Animal
 {
-    [Table("Producto")]
-    public class Producto
+    [Table("TarjetaPago")]
+    public class TarjetaPago
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int id_Producto { get; set; }
-        [Column(TypeName = "varchar(50)")]
-        [Required]
-        public string Tipo_Producto { get; set; }
+        public int id_TarjetaPago { get; set; }
         [Column(TypeName = "varchar(200)")]
         [Required]
-        public String Descripcion_Producto { get; set; }
+        public string Numero_Tarjeta { get; set; }
         [Column(TypeName = "int")]
         [Required]
-        public int Id_Asignado { get; set; }
+        public string FechaCadu_Tarjeta { get; set; }
+        [Column(TypeName = "varchar(200)")]
+        [Required]
+        public string Nom_Propietario { get; set; }
     }
 }
