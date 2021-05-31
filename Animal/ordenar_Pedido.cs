@@ -15,5 +15,7 @@ namespace Animal
         [Column(TypeName = "int")]
         [Required]
         public int id_Producto { get; set; }
+
+        // precio, importe total, cantidad y etc...
     }
 }
