@@ -20,6 +20,7 @@ namespace Consola_1
                 id_Producto = c.id_Producto,
                 id_Pedido=c.id_Pedido,
                 Cantidad=c.Cantidad,
+                PrecioProductoUnitario=c.PrecioProductoUnitario,
                 PrecioTotal =c.PrecioTotal
             };
             //Añade al contexto
@@ -36,6 +37,7 @@ namespace Consola_1
                 Console.Write(ani.id_LineaPedido + " ");
                 Console.Write(ani.Cantidad+ " ");
                 Console.Write(ani.id_Pedido + " ");
+                Console.Write(ani.PrecioProductoUnitario + " ");
                 Console.Write(ani.PrecioTotal + " ");
                 Console.WriteLine(ani.id_Producto);
             }
@@ -49,6 +51,7 @@ namespace Consola_1
                 q.id_Producto = Op.id_Producto;
                 q.id_Pedido = Op.id_Pedido;
                 q.Cantidad = Op.Cantidad;
+                q.PrecioProductoUnitario = Op.PrecioProductoUnitario;
                 q.PrecioTotal = Op.PrecioTotal;
             }
         }

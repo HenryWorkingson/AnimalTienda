@@ -18,6 +18,7 @@ namespace Animal
 
         public int id_Pedido { get; set; }
         public int Cantidad { get; set; }
+        public float PrecioProductoUnitario { get; set; }
         public float PrecioTotal { get; set; }
         // precio, importe total, cantidad y etc...
     }
