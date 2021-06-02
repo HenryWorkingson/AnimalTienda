@@ -6,22 +6,22 @@ using System.Text;
 
 namespace Consola_1
 {
-    class Ordenar_Pedido
+    class Linea_Pedido
     {
         protected DatabaseContext _context;
-        public Ordenar_Pedido(DatabaseContext context)
+        public Linea_Pedido(DatabaseContext context)
         {
             _context = context;
         }
         public bool CreateLinea_Pedido(DtoLinea_Pedido c)
         {
-            Animal.Linea_Pedido miLinea = new Animal.Linea_Pedido()
+            global::Animal.Linea_Pedido miLinea = new global::Animal.Linea_Pedido()
             {
                 id_Producto = c.id_Producto,
-                id_Pedido=c.id_Pedido,
-                Cantidad=c.Cantidad,
-                PrecioProductoUnitario=c.PrecioProductoUnitario,
-                PrecioTotal =c.PrecioTotal
+                id_Pedido= c.id_Pedido,
+                Cantidad= c.Cantidad,
+                PrecioProductoUnitario= c.PrecioProductoUnitario,
+                PrecioTotal = c.PrecioTotal
             };
             //Añade al contexto
             _context.Linea_Pedidos.Add(miLinea);
@@ -40,6 +40,21 @@ namespace Consola_1
                 Console.Write(ani.PrecioProductoUnitario + " ");
                 Console.Write(ani.PrecioTotal + " ");
                 Console.WriteLine(ani.id_Producto);
+            }
+        }
+        public void listarIdLineaPedido(int id)
+        {
+            var q = _context.Linea_Pedidos.Find(id);
+            //var q = (from u in db.Animals select u).ToList();
+            if (q == null) { Console.WriteLine("No encontrado el id esperado"); }
+            else
+            {
+                Console.Write(q.id_LineaPedido + " ");
+                Console.Write(q.Cantidad + " ");
+                Console.Write(q.id_Pedido + " ");
+                Console.Write(q.PrecioProductoUnitario + " ");
+                Console.Write(q.PrecioTotal + " ");
+                Console.WriteLine(q.id_Producto);
             }
         }
         public void upDateLineaPedido(int id, DtoLinea_Pedido Op)

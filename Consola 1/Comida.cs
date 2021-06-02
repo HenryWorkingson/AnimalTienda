@@ -15,11 +15,11 @@ namespace Consola_1
         }
         public bool CreateComida(DtoComida c)
         {
-            Animal.Comida miComida = new Animal.Comida()
+            global::Animal.Comida miComida = new global::Animal.Comida()
             {
                 Nombre_Comida = c.Nombre_Comida,
                 Descripcion_Comida = c.Descripcion_Comida,
-                precio=c.precio
+                precio= c.precio
             };
             //Añade al contexto
             _context.Comidas.Add(miComida);
@@ -36,6 +36,19 @@ namespace Consola_1
                 Console.Write(ani.Nombre_Comida + " ");
                 Console.Write(ani.precio + " ");
                 Console.WriteLine(ani.Descripcion_Comida);
+            }
+        }
+        public void listarIdComida(int id)
+        {
+            var q = _context.Comidas.Find(id);
+            //var q = (from u in db.Animals select u).ToList();
+            if (q == null) { Console.WriteLine("No encontrado el id esperado"); }
+            else
+            {
+                Console.Write(q.id_Comida + " ");
+                Console.Write(q.Nombre_Comida + " ");
+                Console.Write(q.precio + " ");
+                Console.WriteLine(q.Descripcion_Comida);
             }
         }
         public void upDateComida(int id, DtoComida p)

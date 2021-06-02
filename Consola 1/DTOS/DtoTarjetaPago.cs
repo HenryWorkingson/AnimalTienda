@@ -1,10 +1,10 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Consola_1.DTOS
 {
-    class DtoTrajetaPago
+    class DtoTarjetaPago
     {   
         public string Numero_Tarjeta { get; set; }      
         public string FechaCadu_Tarjeta { get; set; }

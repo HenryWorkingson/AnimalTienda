@@ -15,7 +15,7 @@ namespace Animal
         [Column(TypeName = "varchar(200)")]
         [Required]
         public string Numero_Tarjeta { get; set; }
-        [Column(TypeName = "int")]
+        [Column(TypeName = "varchar(200)")]
         [Required]
         public string FechaCadu_Tarjeta { get; set; }
         [Column(TypeName = "varchar(200)")]

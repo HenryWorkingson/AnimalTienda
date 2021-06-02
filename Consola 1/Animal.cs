@@ -1,29 +1,27 @@
 ﻿using Animal;
-using Consola_1.DTO;
+using Consola_1.DTOS;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Consola_1
 {
-    public class TiendaAnimal
+    public class Animal
     {
         protected DatabaseContext _context;
-        public TiendaAnimal(DatabaseContext context)
+        public Animal(DatabaseContext context)
         {
             _context = context;
         }
         public bool  CreateAnimal(DtoAnimal animal)
         {
-            Animal.Animal miAnimal = new Animal.Animal()
+            global::Animal.Animal miAnimal = new global::Animal.Animal()
             {
                 Nombre = animal.Nombre,
                 peso = animal.Peso,
                 color = animal.Color,
                 edad = animal.Edad,
                 tipo_Raza = animal.TipoRaza,
-                descripcion =animal.descripcion,
-                precio=animal.precio
+                descripcion = animal.descripcion,
+                precio= animal.precio
             };
             //Añade al contexto
             _context.Animals.Add(miAnimal);

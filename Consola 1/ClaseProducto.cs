@@ -15,7 +15,7 @@ namespace Consola_1
         }
         public bool CreateProducto(DtoClaseProducto p)
         {
-            Animal.Clase_Producto miProducto = new Animal.Clase_Producto()
+            global::Animal.Clase_Producto miProducto = new global::Animal.Clase_Producto()
             {
                 Tipo_Producto = p.Tipo_Producto,
                 Id_Asignado = p.Id_Asignado,
@@ -38,6 +38,20 @@ namespace Consola_1
                 Console.Write(ani.Id_Asignado + " ");
                 Console.WriteLine(ani.Descripcion_Producto);
                 Console.WriteLine(ani.Precio_Producto);
+            }
+        }
+        public void listarIdProducto(int id)
+        {
+            var q = _context.Productos.Find(id);
+            //var q = (from u in db.Animals select u).ToList();
+            if (q == null) { Console.WriteLine("No encontrado el id esperado"); }
+            else
+            {
+                Console.Write(q.id_Producto + " ");
+                Console.Write(q.Tipo_Producto + " ");
+                Console.Write(q.Id_Asignado + " ");
+                Console.Write(q.Descripcion_Producto);
+                Console.WriteLine(q.Precio_Producto);
             }
         }
         public void upDateProducto(int id, DtoClaseProducto p)

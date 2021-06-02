@@ -15,15 +15,24 @@ namespace Consola_1
         }
         public bool CreateJuguete(DtoJuguete J)
         {
-            Animal.Juguete miJuguete = new Animal.Juguete()
+            global::Animal.Juguete miJuguete = new global::Animal.Juguete()
             {
                 Nombre_Juguete = J.Nombre_Juguete,
                 Descripcion_Juguete = J.Descripcion_Juguete,
-                precio=J.precio
+                precio= J.precio
             };
             //Añade al contexto
             _context.Juguete.Add(miJuguete);
-            //Guarda en BBDD
+            _context.SaveChanges();
+            
+            global::Animal.Clase_Producto miProducto = new global::Animal.Clase_Producto()
+            {
+                Tipo_Producto = "Juguete",
+                Id_Asignado = miJuguete.id_Juguete,
+                Descripcion_Producto = J.Descripcion_Juguete,
+                Precio_Producto = J.precio,
+            };
+            _context.Productos.Add(miProducto);
             _context.SaveChanges();
             return true;
         }
@@ -36,6 +45,19 @@ namespace Consola_1
                 Console.Write(ani.Nombre_Juguete + " ");
                 Console.Write(ani.precio + " ");
                 Console.WriteLine(ani.Descripcion_Juguete);
+            }
+        }
+        public void listarIdJuguete(int id)
+        {
+            var q = _context.Juguete.Find(id);
+            //var q = (from u in db.Animals select u).ToList();
+            if (q == null) { Console.WriteLine("No encontrado el id esperado"); }
+            else
+            {
+                Console.Write(q.id_Juguete + " ");
+                Console.Write(q.Nombre_Juguete + " ");
+                Console.Write(q.precio + " ");
+                Console.WriteLine(q.Descripcion_Juguete);
             }
         }
         public void upDateJuguete(int id, DtoJuguete j)

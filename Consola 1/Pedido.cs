@@ -15,11 +15,11 @@ namespace Consola_1
         }
         public bool CreatePedido(DtoPedido p)
         {
-            Animal.Pedido miPedido = new Animal.Pedido()
+            global::Animal.Pedido miPedido = new global::Animal.Pedido()
             {
                 Descripcion_Pedido = p.Descripcion_Pedido,
-                Id_Tarjeta=p.Id_Tarjeta,
-                Precio_Total=p.Precio_Total,
+                Id_Tarjeta= p.Id_Tarjeta,
+                Precio_Total= p.Precio_Total,
                 Id_Direccion = p.Id_Direccion,
                 Id_Cliente = p.Id_Cliente,
             };
@@ -40,6 +40,21 @@ namespace Consola_1
                 Console.Write(ani.Id_Direccion + " ");
                 Console.Write(ani.Id_Tarjeta + " ");
                 Console.WriteLine(ani.Precio_Total);
+            }
+        }
+        public void listarIdPedido(int id)
+        {
+            var q = _context.Pedidos.Find(id);
+            //var q = (from u in db.Animals select u).ToList();
+            if (q == null) { Console.WriteLine("No encontrado el id esperado"); }
+            else
+            {
+                Console.Write(q.id_Pedido + " ");
+                Console.Write(q.Descripcion_Pedido + " ");
+                Console.Write(q.Id_Cliente + " ");
+                Console.Write(q.Id_Direccion + " ");
+                Console.Write(q.Id_Tarjeta + " ");
+                Console.WriteLine(q.Precio_Total);
             }
         }
         public void upDatePedido(int id, DtoPedido p)

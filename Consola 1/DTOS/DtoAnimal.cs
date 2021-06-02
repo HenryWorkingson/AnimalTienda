@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Consola_1.DTO
+namespace Consola_1.DTOS
 {
     public class DtoAnimal
     {

@@ -15,7 +15,7 @@ namespace Consola_1
         }
         public bool CreateRaza(DtoRaza raza)
         {
-            Animal.Raza miRaza = new Animal.Raza()
+            global::Animal.Raza miRaza = new global::Animal.Raza()
             {
                 Nombre_Raza = raza.Nombre_Raza,
                 Descripcion_Raza = raza.Descripcion_Raza,
@@ -34,6 +34,18 @@ namespace Consola_1
                 Console.Write(ani.id_Raza + " ");
                 Console.Write(ani.Nombre_Raza + " ");
                 Console.WriteLine(ani.Descripcion_Raza);
+            }
+        }
+        public void listarIdRaza(int id)
+        {
+            var q = _context.Razas.Find(id);
+            //var q = (from u in db.Animals select u).ToList();
+            if (q == null) { Console.WriteLine("No encontrado el id esperado"); }
+            else
+            {
+                Console.Write(q.id_Raza + " ");
+                Console.Write(q.Nombre_Raza + " ");
+                Console.WriteLine(q.Descripcion_Raza);
             }
         }
         public void upDateRazas(int id, DtoRaza raza)
