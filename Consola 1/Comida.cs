@@ -25,6 +25,15 @@ namespace Consola_1
             _context.Comidas.Add(miComida);
             //Guarda en BBDD
             _context.SaveChanges();
+            global::Animal.Clase_Producto miProducto = new global::Animal.Clase_Producto()
+            {
+                Tipo_Producto = "Comida",
+                Id_Asignado = miComida.id_Comida,
+                Descripcion_Producto = c.Descripcion_Comida,
+                Precio_Producto = c.precio,
+            };
+            _context.Productos.Add(miProducto);
+            _context.SaveChanges();
             return true;
         }
         public void listarComidaConsola()
@@ -61,6 +70,7 @@ namespace Consola_1
                 q.Descripcion_Comida = p.Descripcion_Comida;
                 q.precio = p.precio;
             }
+            _context.SaveChanges();
         }
         public bool EliminarComida(int id)
         {

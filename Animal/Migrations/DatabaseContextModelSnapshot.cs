@@ -204,6 +204,27 @@ namespace Animal.Migrations
                     b.ToTable("LineaDireccionCliente");
                 });
 
+            modelBuilder.Entity("Animal.LineaTarjetaCliente", b =>
+                {
+                    b.Property<int>("id_TarjetaCliente")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Id_Cliente")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Id_Tarjeta")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Ultima_Tarjeta")
+                        .HasColumnType("bit");
+
+                    b.HasKey("id_TarjetaCliente");
+
+                    b.ToTable("LineaTarjetaCliente");
+                });
+
             modelBuilder.Entity("Animal.Linea_Pedido", b =>
                 {
                     b.Property<int>("id_LineaPedido")

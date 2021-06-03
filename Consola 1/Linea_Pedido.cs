@@ -69,6 +69,7 @@ namespace Consola_1
                 q.PrecioProductoUnitario = Op.PrecioProductoUnitario;
                 q.PrecioTotal = Op.PrecioTotal;
             }
+            _context.SaveChanges();
         }
         public bool EliminarLineaPedido(int id)
         {

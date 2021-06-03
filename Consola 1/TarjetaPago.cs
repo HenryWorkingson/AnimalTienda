@@ -62,6 +62,7 @@ namespace Consola_1
                 q.Nom_Propietario = tar.Nom_Propietario;
                 q.FechaCadu_Tarjeta = tar.FechaCadu_Tarjeta;
             }
+            _context.SaveChanges();
         }
         public bool EliminarTarjetaPago(int id)
         {

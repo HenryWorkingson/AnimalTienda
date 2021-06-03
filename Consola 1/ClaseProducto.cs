@@ -65,6 +65,7 @@ namespace Consola_1
                 q.Descripcion_Producto = p.Descripcion_Producto;
                 q.Precio_Producto = p.Precio_Producto;
             }
+            _context.SaveChanges();
         }
         public bool EliminarProducto(int id)
         {

@@ -57,6 +57,7 @@ namespace Consola_1
                 q.Nombre_Raza = raza.Nombre_Raza;
                 q.Descripcion_Raza = raza.Descripcion_Raza;
             }
+            _context.SaveChanges();
         }
         public bool EliminarAnimal(int id)
         {

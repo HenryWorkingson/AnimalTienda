@@ -27,6 +27,15 @@ namespace Consola_1
             _context.Animals.Add(miAnimal);
             //Guarda en BBDD
             _context.SaveChanges();
+            global::Animal.Clase_Producto miProducto = new global::Animal.Clase_Producto()
+            {
+                Tipo_Producto = "Animal",
+                Id_Asignado = miAnimal.id_Animal,
+                Descripcion_Producto = animal.descripcion,
+                Precio_Producto = animal.precio,
+            };
+            _context.Productos.Add(miProducto);
+            _context.SaveChanges();
             return true;
         }
         public void listarAnimalConsola()
@@ -77,6 +86,7 @@ namespace Consola_1
                 q.precio = animal.precio;
                 listarIdAnimal(id);
             }
+            _context.SaveChanges();
         }
         public bool EliminarAnimal(int id)
         {

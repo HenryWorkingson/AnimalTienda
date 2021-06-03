@@ -70,6 +70,7 @@ namespace Consola_1
                 q.Descripcion_Juguete = j.Descripcion_Juguete;
                 q.precio = j.precio;
             }
+            _context.SaveChanges();
         }
         public bool EliminarJuguete(int id)
         {

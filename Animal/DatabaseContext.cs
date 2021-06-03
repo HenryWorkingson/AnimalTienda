@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace Animal
 {
@@ -24,7 +26,13 @@ namespace Animal
         public DbSet<Direccion_Envio> Direccion_Envios { get; set; }
         public DbSet<TarjetaPago> TarjetaPagos { get; set; }
         public DbSet<LineaDireccionCliente> LineasDireccionClientes { get; set; }
-
+        public DbSet<LineaTarjetaCliente> LineaTarjetaClientes { get; set; }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+            modelBuilder.Entity<Pedido>()
+                .HasMany(p => p.lineas);
+                
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

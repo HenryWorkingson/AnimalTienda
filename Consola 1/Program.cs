@@ -168,6 +168,8 @@ namespace Consola_1
             TarjetaPago miTarjeta = new TarjetaPago(context);
             Direccion_Envio miDir = new Direccion_Envio(context);
             LineaDireccionCliente miDirCL = new LineaDireccionCliente(context);
+            LineaTarjetaCliente miTarCL = new LineaTarjetaCliente(context);
+
             // <<----------------------------------------------------------------------------->>
             //Crear Dto para los datos de DTOs para que ellos pueden introducir al DB
 
@@ -205,32 +207,32 @@ namespace Consola_1
             Console.WriteLine("Bienvenido a la tienda Animal");
             DatabaseContext _context = new DatabaseContext();
 
-            Juguete miJuguete = new Juguete(_context);
-            DtoJuguete juguete1 = CrearDtoJuguete("peluche", "una pelota duradera o de buena calidad", 5);
-            miJuguete.CreateJuguete(juguete1);
+            //Juguete miJuguete = new Juguete(_context);
+            //DtoJuguete juguete1 = CrearDtoJuguete("peluche", "una pelota duradera o de buena calidad", 5);
+            //miJuguete.CreateJuguete(juguete1);
 
-            ClaseProducto miClaseProducto = new ClaseProducto(_context);
-            miJuguete.listarJugueteConsola();
-            miClaseProducto.listarProductoConsola();
+            //ClaseProducto miClaseProducto = new ClaseProducto(_context);
+            //miJuguete.listarJugueteConsola();
+            //miClaseProducto.listarProductoConsola();
 
-            //DtoRaza raza1 = CrearDtoRaza("perro", "perror en general");
-            //DtoAnimal animal1 = CrearDtoAnimal("perro", 5, 10, 1, "azul", "perror normal ", 100);
-            //DtoAnimal mianimal = creardtoanimal("perro", "azul", 100, 20, 1);
-            //dtoanimal mianimal2 = creardtoanimal("gato", "negro", 10, 4, 2);
-            //dtoanimal mianimal3 = creardtoanimal("perro", "marron", 10, 5, 1);
-
-            //if ( miTienda.CreateAnimal(animal1) ) {
-            //    Console.WriteLine("Animal Creado");
-            //};
-            //miRaza.CreateRaza(raza1);
-            //Listar-Todo Animal
-
-            //Listar-espefico Animal
-            //miTienda.listarIdAnimal(14);
+            //DtoDireccion_Envio dir1 = CrearDtoDireccion("calle Gran via 5", "Madrid ", "Madrid ", "X123 ", "yi");
+            //DtoTarjetaPago tar1 = CrearDtoTarjetaPago("1234 ", "24-05-2027", "yi");
+            CrearBaseDatos(_context);
 
 
+            //Cliente miCliente = new Cliente(_context);
+            //miCliente.logIn(1, "123");
+            //miCliente.addTarjetaPago(_context.TarjetaPagos.Find(1), 1);
+            //miCliente.addDirEnvio(_context.Direccion_Envios.Find(1), 1);
 
 
+            Animal miAnimal = new Animal(_context);
+            DtoAnimal animal1 = CrearDtoAnimal("perro1", 5, 10, 1, "azul", "perror normal ", 100);
+            DtoAnimal animal2 = CrearDtoAnimal("perro2", 5, 10, 1, "azul", "perror normal ", 100);
+            DtoAnimal animal3 = CrearDtoAnimal("perro3", 5, 10, 1, "azul", "perror normal ", 100);
+            miAnimal.CreateAnimal(animal1);
+            miAnimal.CreateAnimal(animal2);
+            miAnimal.CreateAnimal(animal3);
         }
     }
 }

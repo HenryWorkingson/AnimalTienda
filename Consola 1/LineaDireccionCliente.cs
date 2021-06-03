@@ -62,6 +62,7 @@ namespace Consola_1
                 q.id_DireccionCliente = animal.Id_Direccion;
                 q.Ultima_Dir_Env = animal.Ultima_Dir_Env;
             }
+            _context.SaveChanges();
         }
         public bool EliminarLineaDireccionCliente(int id)
         {

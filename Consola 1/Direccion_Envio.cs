@@ -68,6 +68,7 @@ namespace Consola_1
                 q.DNI_Cliente_Rceiv = animal.DNI_Cliente_Rceiv;
                 q.Nombre_Cliente_Rec = animal.Nombre_Cliente_Rec;
             }
+            _context.SaveChanges();
         }
         public bool EliminarDireccion_Envio(int id)
         {
