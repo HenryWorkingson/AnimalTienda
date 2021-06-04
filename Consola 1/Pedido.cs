@@ -120,12 +120,10 @@ namespace Consola_1
             var q = _context.Linea_Pedidos;
             var z =  _context.Pedidos.Include(p => p.lineas).Where(p=>p.id_Pedido ==id);
             z.FirstOrDefault().lineas.Count();
-            foreach( var p in q)
-            {
-                if(p.id_Pedido == id)
-                {
-                    carro.Add(p);
-                }
+            var x=z.FirstOrDefault().lineas.ToList();
+            foreach( var p in x)
+            {              
+                carro.Add(p);
             }
         }
 

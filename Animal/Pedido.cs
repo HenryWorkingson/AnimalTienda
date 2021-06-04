@@ -20,7 +20,6 @@ namespace Animal
         public int Id_Tarjeta { get; set; }
         public int Id_Direccion { get; set; }
         public float Precio_Total { get; set; }
-
         public ICollection <Linea_Pedido> lineas { get; set; }
     }
 }

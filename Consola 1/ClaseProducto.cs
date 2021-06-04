@@ -23,14 +23,14 @@ namespace Consola_1
                 Precio_Producto = p.Precio_Producto,
             };
             //Añade al contexto
-            _context.Productos.Add(miProducto);
+            _context.Clase_Productos.Add(miProducto);
             //Guarda en BBDD
             _context.SaveChanges();
             return true;
         }
         public void listarProductoConsola()
         {
-            var list = _context.Productos;
+            var list = _context.Clase_Productos;
             foreach (var ani in list)
             {
                 Console.Write(ani.id_Producto + " ");
@@ -42,7 +42,7 @@ namespace Consola_1
         }
         public void listarIdProducto(int id)
         {
-            var q = _context.Productos.Find(id);
+            var q = _context.Clase_Productos.Find(id);
             //var q = (from u in db.Animals select u).ToList();
             if (q == null) { Console.WriteLine("No encontrado el id esperado"); }
             else
@@ -56,7 +56,7 @@ namespace Consola_1
         }
         public void upDateProducto(int id, DtoClaseProducto p)
         {
-            var q = _context.Productos.Find(id);
+            var q = _context.Clase_Productos.Find(id);
             if (q == null) { Console.WriteLine("No encontrado el id esperado"); }
             else
             {

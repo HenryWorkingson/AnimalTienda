@@ -34,7 +34,7 @@ namespace Consola_1
                 Descripcion_Producto = animal.descripcion,
                 Precio_Producto = animal.precio,
             };
-            _context.Productos.Add(miProducto);
+            _context.Clase_Productos.Add(miProducto);
             _context.SaveChanges();
             return true;
         }

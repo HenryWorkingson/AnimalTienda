@@ -32,7 +32,7 @@ namespace Consola_1
                 Descripcion_Producto = J.Descripcion_Juguete,
                 Precio_Producto = J.precio,
             };
-            _context.Productos.Add(miProducto);
+            _context.Clase_Productos.Add(miProducto);
             _context.SaveChanges();
             return true;
         }

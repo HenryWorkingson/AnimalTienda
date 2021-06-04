@@ -32,7 +32,7 @@ namespace Consola_1
                 Descripcion_Producto = c.Descripcion_Comida,
                 Precio_Producto = c.precio,
             };
-            _context.Productos.Add(miProducto);
+            _context.Clase_Productos.Add(miProducto);
             _context.SaveChanges();
             return true;
         }
