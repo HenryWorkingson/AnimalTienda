@@ -38,8 +38,16 @@ namespace Animal
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Pedido>()
                 .HasMany(p => p.lineas);
-
-                
+            modelBuilder.Entity<Cliente>()
+                .HasMany(p => p.lineasDir);
+            modelBuilder.Entity<Cliente>()
+                .HasMany(p => p.lineasPedido);
+            modelBuilder.Entity<Cliente>()
+                .HasMany(p => p.lineasTar);
+            modelBuilder.Entity<Producto>()
+                .HasMany(p => p.lineasAtri);
+            modelBuilder.Entity<Producto>()
+                .HasMany(p => p.lineasCarac);
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

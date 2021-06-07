@@ -6,8 +6,9 @@ using System.Text;
 
 namespace Consola_1
 {
-    class Linea_Pedido
+    public class Linea_Pedido
     {
+        public List<Pedido> Lista_Pedidos { get; set; }
         protected DatabaseContext _context;
         public Linea_Pedido(DatabaseContext context)
         {

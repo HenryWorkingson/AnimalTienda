@@ -17,5 +17,7 @@ namespace Animal
         public string NombreProducto { get; set; }
         public string DescripcionProducto { get; set; }
         public double PrecioBase { get; set; }
+        public ICollection<CaracteristicaProducto> lineasCarac { get; set; }
+        public ICollection<AtributoProducto> lineasAtri { get; set; }
     }
 }

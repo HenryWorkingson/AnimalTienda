@@ -21,6 +21,8 @@ namespace Animal
         public string cuenta_Cliente { get; set; }
         public string password_Cliente { get; set; }
         public string correo_Cliente { get; set; }
-
+        public ICollection<TarjetaPago> lineasTar { get; set; }
+        public ICollection<Direccion_Envio> lineasDir { get; set; }
+        public ICollection<Pedido> lineasPedido { get; set; }
     }
 }

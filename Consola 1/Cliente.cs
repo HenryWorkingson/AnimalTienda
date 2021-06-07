@@ -1,7 +1,9 @@
 ﻿using Animal;
 using Consola_1.DTOS;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Consola_1
@@ -48,7 +50,7 @@ namespace Consola_1
                 Console.Write(ani.Apellido_Cliente + " ");
                 Console.Write(ani.cuenta_Cliente + " ");
                 Console.Write(ani.password_Cliente + " ");
-                Console.Write(ani.correo_Cliente + " ");
+                Console.WriteLine(ani.correo_Cliente + " ");
             }
         }
         //buqueda con el id_Animal para devolver a una animal especifico
@@ -200,6 +202,25 @@ namespace Consola_1
         {
             misPedidos.Add(p);
             return misPedidos;
+        }
+        public void loadLista(int idCliente)
+        {
+            var z = _context.Clientes.Include(p => p.lineasDir).Include(p => p.lineasPedido).Include(p => p.lineasTar).FirstOrDefault(p => p.id_Cliente == idCliente);
+            var x = z.lineasDir.ToList();
+            foreach (var p in x)
+            {              
+                misDirs.Add(p);
+            }
+            var k = z.lineasTar.ToList();
+            foreach (var p in k)
+            {
+                misTars.Add(p);
+            }
+            var f = z.lineasPedido.ToList();
+            foreach (var p in f)
+            {
+                misPedidos.Add(p);
+            }
         }
     }
 }

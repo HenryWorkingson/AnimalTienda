@@ -1,13 +1,18 @@
 ﻿using Animal;
 using Consola_1.DTOS;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Consola_1
 {
     class Producto
     {
+        private List<global::Animal.AtributoProducto> AtriProduct;
+        private List<global::Animal.CaracteristicaProducto> CaracProduct;
+
         protected DatabaseContext _context;
         public Producto(DatabaseContext context)
         {
@@ -74,6 +79,21 @@ namespace Consola_1
                 _context.Productos.Remove(q);
                 _context.SaveChanges();
                 return true;
+            }
+        }
+        public void loadLista(int idProducto)
+        {
+            var z = _context.Productos.Include(p => p.lineasAtri).Include(p => p.lineasCarac).FirstOrDefault(p => p.IdProducto == idProducto);
+            //z.FirstOrDefault().lineasAtri.Count();
+            var x = z.lineasAtri.ToList();
+            foreach (var p in x)
+            {
+                AtriProduct.Add(p);
+            }
+            var k = z.lineasCarac.ToList();
+            foreach (var p in k)
+            {
+                CaracProduct.Add(p);
             }
         }
     }

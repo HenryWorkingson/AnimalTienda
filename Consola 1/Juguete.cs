@@ -24,16 +24,6 @@ namespace Consola_1
             //Añade al contexto
             _context.Juguete.Add(miJuguete);
             _context.SaveChanges();
-            
-            global::Animal.Clase_Producto miProducto = new global::Animal.Clase_Producto()
-            {
-                Tipo_Producto = "Juguete",
-                Id_Asignado = miJuguete.id_Juguete,
-                Descripcion_Producto = J.Descripcion_Juguete,
-                Precio_Producto = J.precio,
-            };
-            _context.Clase_Productos.Add(miProducto);
-            _context.SaveChanges();
             return true;
         }
         public void listarJugueteConsola()

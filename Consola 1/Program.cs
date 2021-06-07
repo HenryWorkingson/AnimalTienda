@@ -82,7 +82,7 @@ namespace Consola_1
             };
             return miLineaDireccionCliente;
         }
-        public static DtoPedido CrearDtoPedido(string Descripcion_Pedido,int Id_Cliente, int Id_Tarjeta, int Id_Direccion, float Precio_Total)
+        public static DtoPedido CrearPedido(string Descripcion_Pedido,int Id_Cliente, int Id_Tarjeta, int Id_Direccion, float Precio_Total)
         {
             DtoPedido miPedido = new DtoPedido()
             {
@@ -139,6 +139,61 @@ namespace Consola_1
                 Nombre_Cliente_Rec=Nombre_Cliente_Rec
             };
             return miDir;
+        }
+        public static DtoAtributo CrearAtributo(string descripcion)
+        {
+            DtoAtributo miAtri = new DtoAtributo()
+            {
+                Descripcion = descripcion
+            };
+            return miAtri;
+        }
+        public static DtoAtributoProducto CrearAtributoProducto(int idProducto, int idAtributo, int idAtributoValor)
+        {
+            DtoAtributoProducto miAtributoProd = new DtoAtributoProducto()
+            {
+                IdAtributo = idAtributo,
+                IdAtributoValor = idAtributoValor,
+                IdProducto = idProducto,
+            };
+            return miAtributoProd;
+        }
+        public static DtoAtributo_Valor CrearAtributoValor (string descripcion, int idAtributo)
+        {
+            DtoAtributo_Valor miAtributoValor = new DtoAtributo_Valor()
+            {
+                IdAtributo=idAtributo,
+                Descripcion=descripcion,
+            };
+            return miAtributoValor;
+        }
+        public static DtoCaracteristica CrearCaracteristica (string descripcion)
+        {
+            DtoCaracteristica miCarac = new DtoCaracteristica()
+            {
+                
+                Descripcion = descripcion,
+            };
+            return miCarac;
+        }
+        public static DtoCaracteristicaProducto CrearCaracteristicaProducto (int idProducto, int idCaracteristica)
+        {
+            DtoCaracteristicaProducto miCaracProduct = new DtoCaracteristicaProducto()
+            {
+                IdCaracteristica=idCaracteristica,
+                IdProducto=idProducto,
+            };
+            return miCaracProduct;
+        }
+        public static DtoProducto CrearProducto(string NombreProducto, string DescripcionProducto, double PrecioBase)
+        {
+            DtoProducto miProduct = new DtoProducto()
+            {
+                DescripcionProducto=DescripcionProducto,
+                NombreProducto=NombreProducto,
+                PrecioBase=PrecioBase
+            };
+            return miProduct;
         }
         public static void ElinimarBaseDatos(DatabaseContext dbc)
         {
@@ -200,39 +255,84 @@ namespace Consola_1
             {
                Console.WriteLine("Clase Prducto Creado");
             };
+           
         }
-
             static void Main(string[] args)
         {
             Console.WriteLine("Bienvenido a la tienda Animal");
             DatabaseContext _context = new DatabaseContext();
-
-            //Juguete miJuguete = new Juguete(_context);
-            //DtoJuguete juguete1 = CrearDtoJuguete("peluche", "una pelota duradera o de buena calidad", 5);
-            //miJuguete.CreateJuguete(juguete1);
-
-            //ClaseProducto miClaseProducto = new ClaseProducto(_context);
-            //miJuguete.listarJugueteConsola();
-            //miClaseProducto.listarProductoConsola();
-
-            //DtoDireccion_Envio dir1 = CrearDtoDireccion("calle Gran via 5", "Madrid ", "Madrid ", "X123 ", "yi");
-            //DtoTarjetaPago tar1 = CrearDtoTarjetaPago("1234 ", "24-05-2027", "yi");
             CrearBaseDatos(_context);
 
+            //Animal miAnimal = new Animal(_context);
+            //DtoAnimal animal1 = CrearDtoAnimal("perro1", 5, 10, 1, "azul", "perror normal ", 100);
+            //DtoAnimal animal2 = CrearDtoAnimal("perro2", 5, 10, 1, "azul", "perror normal ", 100);
+            //DtoAnimal animal3 = CrearDtoAnimal("perro3", 5, 10, 1, "azul", "perror normal ", 100);
+            //miAnimal.CreateAnimal(animal1);
+            //miAnimal.CreateAnimal(animal2);
+            //miAnimal.CreateAnimal(animal3);
+            //miAnimal.listarAnimalConsola();
 
-            //Cliente miCliente = new Cliente(_context);
-            //miCliente.logIn(1, "123");
-            //miCliente.addTarjetaPago(_context.TarjetaPagos.Find(1), 1);
-            //miCliente.addDirEnvio(_context.Direccion_Envios.Find(1), 1);
+            //Atributo miAtributo = new Atributo(_context);
+            //DtoAtributo atri1 = CrearAtributo("peso");
+            //miAtributo.CreateAtributo(atri1);
+
+            //AtributoProducto miAtribuProduc = new AtributoProducto(_context);
+            //DtoAtributoProducto atriPro1 = CrearAtributoProducto(1, 2, 1);
+            //miAtribuProduc.CrearAtributoProducto(atriPro1);
+
+            //AtributoValor miAtriValor = new AtributoValor(_context);
+            //DtoAtributo_Valor AtriValor1 = CrearAtributoValor("kg",20);
+            //miAtriValor.CreateAtributoValor(AtriValor1);
+
+            //Caracteristica miCarc = new Caracteristica(_context);
+            //DtoCaracteristica carac1 = CrearCaracteristica("Raza Caniche");
+            //miCarc.CreateCaracteristica(carac1);
+
+            //CaracteristicaProducto miCaracProducto = new CaracteristicaProducto(_context);
+            //DtoCaracteristicaProducto caracProduc1 = CrearCaracteristicaProducto(1, 1);
+            //miCaracProducto.CreateCaracteristicaProducto(caracProduc1);
+
+            //Producto miProducto = new Producto(_context);
+            //DtoProducto producto1 = CrearProducto("perro", "animal numero 1", 5);
+            //miProducto.CreateProducto(producto1);
+
+            //El cliente entra en la tienda
+            Cliente miCliente = new Cliente(_context);
 
 
-            Animal miAnimal = new Animal(_context);
-            DtoAnimal animal1 = CrearDtoAnimal("perro1", 5, 10, 1, "azul", "perror normal ", 100);
-            DtoAnimal animal2 = CrearDtoAnimal("perro2", 5, 10, 1, "azul", "perror normal ", 100);
-            DtoAnimal animal3 = CrearDtoAnimal("perro3", 5, 10, 1, "azul", "perror normal ", 100);
-            miAnimal.CreateAnimal(animal1);
-            miAnimal.CreateAnimal(animal2);
-            miAnimal.CreateAnimal(animal3);
+            //El cliente coge un carro
+            carrito miCarrito = new carrito();
+
+
+            //El cliente se va a la seccion de jugetes
+            //List<Producto> productos = new Producto().listarProductoConsola();
+
+
+            
+
+            //Añadir al carrito el producto 5
+
+            //miCarrito.AddItem()
+
+
+            miCliente.loadLista(1);
+            miCliente.MisTarjetaPago();
+            miCliente.listarClienteConsola();
+
+            Pedido miPedido = new Pedido(_context);
+            DtoPedido producto1 = CrearPedido ("primer pedido", 1, 1, 1, 0);
+            miPedido.CreatePedido(producto1);
+            Linea_Pedido miLineaPedido = new Linea_Pedido(_context);
+            DtoLinea_Pedido miLinea_Pedido1 = CrearDtoLinea_Pedido(1, 1, 3, 5, 5 * 3);
+            DtoLinea_Pedido miLinea_Pedido2 = CrearDtoLinea_Pedido(1, 1, 2, 5, 5 * 2);
+            miLineaPedido.CreateLinea_Pedido(miLinea_Pedido1);
+            miLineaPedido.CreateLinea_Pedido(miLinea_Pedido2);
+            Console.WriteLine("Bienvenido a la tienda Animal");
+            miPedido.loadCarro(1);
+            miPedido.mostrarCarro(1);
+
+
+
         }
     }
 }

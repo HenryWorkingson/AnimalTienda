@@ -117,13 +117,55 @@ namespace Consola_1
         }
         public void loadCarro(int id)
         {
+            ////var q = _context.Linea_Pedidos;
+            ////var z =_context.Linea_Pedidos.Include(p => p.Lista_Pedidos).Where(p => p.id_Pedido == id).ToList();
+            ////var z =  _context.Pedidos.Include(p => p.lineas).Where(p=>p.id_Pedido ==id);
+            //var z = _context.Pedidos.Include(p => p.lineas.Where(lineas => lineas.id_Pedido.Equals(id))).ToList();
+            //if (z != null)
+            //{
+            //    //var z = _context.Pedidos.Include(p => p.lineas).Where(p=> p.lineas.Select(list=> list.id_Pedido).Equals(id)).ToList();
+            //    //var z=_context.Linea_Pedidos.Include(p => p.id_Pedido).Where(p=>p.id_Pedido == id).ToList();
+            //    // z.FirstOrDefault().lineas.Count();
+            //    //var z = _context.Pedidos.Include(p => p.lineas).FirstOrDefault(p => p.id_Pedido == id);  
+            //    var x = z.FirstOrDefault().lineas;
+            //    foreach (var p in x)
+            //    {
+            //        carro.Add(p);
+            //    }
+            //}
             var q = _context.Linea_Pedidos;
-            var z =  _context.Pedidos.Include(p => p.lineas).Where(p=>p.id_Pedido ==id);
-            z.FirstOrDefault().lineas.Count();
-            var x=z.FirstOrDefault().lineas.ToList();
-            foreach( var p in x)
-            {              
-                carro.Add(p);
+            foreach (var z in q ) {
+                if (z.id_Pedido == id)
+                {
+                    carro.Add(z);
+                    Console.WriteLine(z.id_LineaPedido);
+                }
+            }
+            mostrarCarro(id);
+        }
+        public List<global::Animal.Linea_Pedido> getCarro()
+        {
+            return carro;
+        }
+        public void mostrarCarro(int idPedido)
+        {
+            var p= _context.Pedidos.Find(idPedido);
+            if (p == null || p.lineas == null)
+                if(p == null)
+                    Console.WriteLine("perdido1");
+                else
+                    Console.WriteLine("perdido2");
+            else
+            {
+                foreach (var q in p.lineas)
+                {
+                    Console.Write(q.id_LineaPedido + " ");
+                    Console.Write(q.Cantidad + " ");
+                    Console.Write(q.id_Pedido + " ");
+                    Console.Write(q.PrecioProductoUnitario + " ");
+                    Console.Write(q.PrecioTotal + " ");
+                    Console.WriteLine(q.id_Producto);
+                }
             }
         }
 
