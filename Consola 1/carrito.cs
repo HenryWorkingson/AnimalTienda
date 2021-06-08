@@ -8,19 +8,19 @@ namespace Consola_1
     public class carrito
     {
 
-        private List<global::Animal.Linea_Pedido> _articulos;
+        private List<global::Animal.Producto> _articulos;
 
-        public List<global::Animal.Linea_Pedido> Articulos { get => _articulos; set => _articulos = value; }
+        public List<global::Animal.Producto> Articulos { get => _articulos; set => _articulos = value; }
 
         public carrito()
         {
 
-            Articulos = new List<global::Animal.Linea_Pedido>();
+            Articulos = new List<global::Animal.Producto>();
 
         }
 
 
-        public bool AddItem(global::Animal.Linea_Pedido articulo)
+        public bool AddItem(global::Animal.Producto articulo)
         {
             try
             {
@@ -35,11 +35,12 @@ namespace Consola_1
 
         }
 
-        public bool RemoveItem(global::Animal.Linea_Pedido articulo)
+        public bool RemoveItem(global::Animal.Producto articulo)
         {
             try
             {
-                Articulos.RemoveAll(_ => _.id_Producto == articulo.id_Producto);
+                Articulos.Remove(articulo);
+                //Articulos.RemoveAll(_ => _.id_Producto == articulo.id_Producto);
                 return true;
             }
             catch (Exception)
@@ -66,11 +67,26 @@ namespace Consola_1
 
         }
 
-        public List<global::Animal.Linea_Pedido> getAllItems()
+        public List<global::Animal.Producto> getAllItems()
         {
+            foreach (var q in _articulos)
+            {
+                Console.Write(q.IdProducto + " ");
+                Console.Write(q.NombreProducto + " ");
+                Console.Write(q.DescripcionProducto + " ");
+                Console.WriteLine(q.PrecioBase);
+            }
             return _articulos;
         }
-
+        public double PrecioTotal()
+        {
+            double result = 0;
+            foreach(var q in _articulos)
+            {
+                result= result + q.PrecioBase;
+            }
+            return result;
+        }
 
     }
 }

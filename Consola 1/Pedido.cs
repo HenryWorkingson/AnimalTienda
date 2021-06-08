@@ -20,7 +20,6 @@ namespace Consola_1
         public bool CreatePedido(DtoPedido p)
         {
             carro = new List<global::Animal.Linea_Pedido>();
-
             global::Animal.Pedido miPedido = new global::Animal.Pedido()
             {
                 Descripcion_Pedido = p.Descripcion_Pedido,
@@ -29,7 +28,7 @@ namespace Consola_1
                 Id_Direccion = p.Id_Direccion,
                 Id_Cliente = p.Id_Cliente,
             };
-            loadCarro(miPedido.id_Pedido);
+            //loadCarro(miPedido.id_Pedido);
             //Añade al contexto
             _context.Pedidos.Add(miPedido);
             //Guarda en BBDD
@@ -115,34 +114,34 @@ namespace Consola_1
                 _context.Linea_Pedidos.Remove(p);
             }
         }
-        public void loadCarro(int id)
-        {
-            ////var q = _context.Linea_Pedidos;
-            ////var z =_context.Linea_Pedidos.Include(p => p.Lista_Pedidos).Where(p => p.id_Pedido == id).ToList();
-            ////var z =  _context.Pedidos.Include(p => p.lineas).Where(p=>p.id_Pedido ==id);
-            //var z = _context.Pedidos.Include(p => p.lineas.Where(lineas => lineas.id_Pedido.Equals(id))).ToList();
-            //if (z != null)
-            //{
-            //    //var z = _context.Pedidos.Include(p => p.lineas).Where(p=> p.lineas.Select(list=> list.id_Pedido).Equals(id)).ToList();
-            //    //var z=_context.Linea_Pedidos.Include(p => p.id_Pedido).Where(p=>p.id_Pedido == id).ToList();
-            //    // z.FirstOrDefault().lineas.Count();
-            //    //var z = _context.Pedidos.Include(p => p.lineas).FirstOrDefault(p => p.id_Pedido == id);  
-            //    var x = z.FirstOrDefault().lineas;
-            //    foreach (var p in x)
-            //    {
-            //        carro.Add(p);
-            //    }
-            //}
-            var q = _context.Linea_Pedidos;
-            foreach (var z in q ) {
-                if (z.id_Pedido == id)
-                {
-                    carro.Add(z);
-                    Console.WriteLine(z.id_LineaPedido);
-                }
-            }
-            mostrarCarro(id);
-        }
+        //public void loadCarro(int id)
+        //{
+        //    ////var q = _context.Linea_Pedidos;
+        //    ////var z =_context.Linea_Pedidos.Include(p => p.Lista_Pedidos).Where(p => p.id_Pedido == id).ToList();
+        //    ////var z =  _context.Pedidos.Include(p => p.lineas).Where(p=>p.id_Pedido ==id);
+        //    //var z = _context.Pedidos.Include(p => p.lineas.Where(lineas => lineas.id_Pedido.Equals(id))).ToList();
+        //    //if (z != null)
+        //    //{
+        //    //    //var z = _context.Pedidos.Include(p => p.lineas).Where(p=> p.lineas.Select(list=> list.id_Pedido).Equals(id)).ToList();
+        //    //    //var z=_context.Linea_Pedidos.Include(p => p.id_Pedido).Where(p=>p.id_Pedido == id).ToList();
+        //    //    // z.FirstOrDefault().lineas.Count();
+        //    //    //var z = _context.Pedidos.Include(p => p.lineas).FirstOrDefault(p => p.id_Pedido == id);  
+        //    //    var x = z.FirstOrDefault().lineas;
+        //    //    foreach (var p in x)
+        //    //    {
+        //    //        carro.Add(p);
+        //    //    }
+        //    //}
+        //    var q = _context.Linea_Pedidos;
+        //    foreach (var z in q ) {
+        //        if (z.id_Pedido == id)
+        //        {
+        //            carro.Add(z);
+        //            Console.WriteLine(z.id_LineaPedido);
+        //        }
+        //    }
+        //    mostrarCarro(id);
+        //}
         public List<global::Animal.Linea_Pedido> getCarro()
         {
             return carro;
@@ -167,6 +166,25 @@ namespace Consola_1
                     Console.WriteLine(q.id_Producto);
                 }
             }
+        }
+        public global::Animal.Pedido ultimoPedido()
+        {
+            var list = _context.Pedidos;
+            global::Animal.Pedido q=null;
+            foreach (var ani in list)
+            {
+                if (ani != null)
+                {
+                    Console.Write(ani.id_Pedido + " ");
+                    Console.Write(ani.Descripcion_Pedido + " ");
+                    Console.Write(ani.Id_Cliente + " ");
+                    Console.Write(ani.Id_Direccion + " ");
+                    Console.Write(ani.Id_Tarjeta + " ");
+                    Console.WriteLine(ani.Precio_Total);
+                    q = ani;
+                }
+            }
+            return q;
         }
 
     }

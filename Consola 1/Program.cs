@@ -1,6 +1,7 @@
 ﻿using Animal;
 using Consola_1.DTOS;
 using System;
+using System.Collections.Generic;
 
 namespace Consola_1
 {
@@ -82,7 +83,7 @@ namespace Consola_1
             };
             return miLineaDireccionCliente;
         }
-        public static DtoPedido CrearPedido(string Descripcion_Pedido,int Id_Cliente, int Id_Tarjeta, int Id_Direccion, float Precio_Total)
+        public static DtoPedido CrearPedido(string Descripcion_Pedido,int Id_Cliente, int Id_Tarjeta, int Id_Direccion, double Precio_Total)
         {
             DtoPedido miPedido = new DtoPedido()
             {
@@ -94,7 +95,7 @@ namespace Consola_1
             };
             return miPedido;
         }
-        public static DtoLinea_Pedido CrearDtoLinea_Pedido(int id_Producto, int id_Pedido, int Cantidad, float PrecioProductoUnitario, float PrecioTotal)
+        public static DtoLinea_Pedido CrearDtoLinea_Pedido(int id_Producto, int id_Pedido, int Cantidad, double PrecioProductoUnitario, double PrecioTotal)
         {
             DtoLinea_Pedido miLinea_Pedido = new DtoLinea_Pedido()
             {
@@ -298,7 +299,8 @@ namespace Consola_1
 
             //El cliente entra en la tienda
             Cliente miCliente = new Cliente(_context);
-
+            DtoCliente cliente1 = CrearDtoCliente("cliente_Carro", "Carro", "carro_Cliente", "123456789", "carro@.es");
+            miCliente.CreateCliente(cliente1);
 
             //El cliente coge un carro
             carrito miCarrito = new carrito();
@@ -306,32 +308,39 @@ namespace Consola_1
 
             //El cliente se va a la seccion de jugetes
             //List<Producto> productos = new Producto().listarProductoConsola();
+            Producto miProducto = new Producto(_context);
+            DtoProducto producto1 = CrearProducto("pelota juguete", "juguete 1", 5);
+            miProducto.CreateProducto(producto1);
+            miProducto.listarProductoConsola();
 
+            //Añadir al carrito el producto 3
+            miCarrito.AddItem(_context.Productos.Find(3));
+            miCarrito.AddItem(_context.Productos.Find(1));
+            miCarrito.AddItem(_context.Productos.Find(2));
 
-            
-
-            //Añadir al carrito el producto 5
+            miCarrito.getAllItems();
 
             //miCarrito.AddItem()
+            miCarrito.RemoveItem(_context.Productos.Find(2));
+            miCarrito.getAllItems();
 
-
-            miCliente.loadLista(1);
-            miCliente.MisTarjetaPago();
-            miCliente.listarClienteConsola();
-
+            //Pasar por la caja()
             Pedido miPedido = new Pedido(_context);
-            DtoPedido producto1 = CrearPedido ("primer pedido", 1, 1, 1, 0);
-            miPedido.CreatePedido(producto1);
+            DtoPedido producto2 = CrearPedido("Pedido Carro", 1, 1, 1, miCarrito.PrecioTotal());
+            miPedido.CreatePedido(producto2);
+            global::Animal.Pedido p=miPedido.ultimoPedido();
+            List<global::Animal.Producto> list = miCarrito.getAllItems();
             Linea_Pedido miLineaPedido = new Linea_Pedido(_context);
-            DtoLinea_Pedido miLinea_Pedido1 = CrearDtoLinea_Pedido(1, 1, 3, 5, 5 * 3);
-            DtoLinea_Pedido miLinea_Pedido2 = CrearDtoLinea_Pedido(1, 1, 2, 5, 5 * 2);
-            miLineaPedido.CreateLinea_Pedido(miLinea_Pedido1);
-            miLineaPedido.CreateLinea_Pedido(miLinea_Pedido2);
-            Console.WriteLine("Bienvenido a la tienda Animal");
-            miPedido.loadCarro(1);
-            miPedido.mostrarCarro(1);
-
-
+            //Escanear producto
+            foreach (var q in list)
+            {
+                DtoLinea_Pedido miLinea_Pedido = CrearDtoLinea_Pedido(q.IdProducto, p.id_Pedido, 1, q.PrecioBase, q.PrecioBase * 1);
+                miLineaPedido.CreateLinea_Pedido(miLinea_Pedido);
+            }
+            //Pagar 
+            global::Animal.Cliente cl= miCliente.ultimoCliente();
+            miCliente.paga(_context.TarjetaPagos.Find(1));
+            miCliente.listarClienteConsola();
 
         }
     }

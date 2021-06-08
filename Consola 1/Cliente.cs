@@ -222,5 +222,22 @@ namespace Consola_1
                 misPedidos.Add(p);
             }
         }
+        public global::Animal.Cliente ultimoCliente()
+        {
+            var list = _context.Clientes;
+            global::Animal.Cliente q = null;
+            foreach (var ani in list)
+            {
+                if (ani != null)
+                {
+                    q = ani;
+                }
+            }
+            return q;
+        }
+        public bool paga(global::Animal.TarjetaPago t)
+        {
+            return true;
+        }
     }
 }
