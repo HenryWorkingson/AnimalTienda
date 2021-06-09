@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Animal.Carro>
+
+@{
+    ViewData["Title"] = "Carro";
+}
+
+<h1>Carro</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+    <a asp-action="CrearPedido">Facturar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idLProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioProductoUnitario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioTotal)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idLProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioProductoUnitario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioTotal)
+            </td>
+            <td>
+                @Html.ActionLink("Incrementar", "AumentarCarro", new { id = item.idLProducto }, new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Decrementar", "DecrementarCarro", new { id = item.idLProducto }, new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "DeleteCarro", new { id = item.idLProducto }, new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

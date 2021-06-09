@@ -4,14 +4,16 @@ using Animal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Animal.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20210609083409_usuario")]
+    partial class usuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -156,36 +158,6 @@ namespace Animal.Migrations
                     b.HasIndex("ProductoIdProducto");
 
                     b.ToTable("CaracteristicaProducto");
-                });
-
-            modelBuilder.Entity("Animal.Carro", b =>
-                {
-                    b.Property<int>("idLProducto")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Cantidad")
-                        .HasColumnType("int");
-
-                    b.Property<double>("PrecioProductoUnitario")
-                        .HasColumnType("float");
-
-                    b.Property<double>("PrecioTotal")
-                        .HasColumnType("float");
-
-                    b.Property<int>("idCliente")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idProducto")
-                        .HasColumnType("int");
-
-                    b.Property<string>("nombreProducto")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("idLProducto");
-
-                    b.ToTable("Carro");
                 });
 
             modelBuilder.Entity("Animal.Clase_Producto", b =>

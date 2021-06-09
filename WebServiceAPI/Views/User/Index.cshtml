@@ -43,10 +43,11 @@
                 @Html.DisplayFor(modelItem => item.PrecioBase)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Añadir Carro", "AddCarro", new { idProducto = item.IdProducto }
+                    ,new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Eliminar", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "DeleteProducto", new { id = item.IdProducto }, new {
-               onclick="return confirm('¿Estas seguro de que quieres borrar?')"/* id=item.PrimaryKey */ })
+                    onclick="return confirm('¿Estas seguro de que quieres borrar?')"/* id=item.PrimaryKey */ })
             </td>
         </tr>
 }

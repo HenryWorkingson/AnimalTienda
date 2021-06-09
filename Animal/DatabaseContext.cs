@@ -34,7 +34,8 @@ namespace Animal
         public DbSet<Caracteristica> Caracteristicas { get; set; }
         public DbSet<CaracteristicaProducto> CaracteristicaProductos { get; set; }
         public DbSet<PrecioProducto> PrecioProductos { get; set; }
-
+        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Carro> Carros { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<Pedido>()
                 .HasMany(p => p.lineas);

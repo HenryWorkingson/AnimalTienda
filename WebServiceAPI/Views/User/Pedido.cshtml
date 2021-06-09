@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Animal.Pedido>
+
+@{
+    ViewData["Title"] = "Pedido";
+}
+
+<h1>Pedido</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id_Pedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion_Pedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Tarjeta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id_Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio_Total)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_Pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion_Pedido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Cliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Tarjeta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio_Total)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "LineaPedido" , new { id = item.id_Pedido }, new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "DeletePedido" , new { id = item.id_Pedido }, new
+                {
+                    onclick = "return confirm('¿Estas seguro de que quieres borrar?')"/* id=item.PrimaryKey */
+                })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
