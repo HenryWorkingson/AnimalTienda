@@ -21,7 +21,6 @@ namespace Consola_1
                 FechaFin=PPro.FechaFin,
                 PVP=PPro.PVP,
             };
-            //Añade al contexto
             _context.PrecioProductos.Add(miPPro);
             //Guarda en BBDD
             _context.SaveChanges();

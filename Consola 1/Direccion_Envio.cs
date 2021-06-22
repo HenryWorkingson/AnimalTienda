@@ -21,7 +21,6 @@ namespace Consola_1
                 DNI_Cliente_Rceiv = animal.DNI_Cliente_Rceiv,
                 Nombre_Cliente_Rec = animal.Nombre_Cliente_Rec,
             };
-            //Añade al contexto
             _context.Direccion_Envios.Add(miDE);
             //Guarda en BBDD
             _context.SaveChanges();

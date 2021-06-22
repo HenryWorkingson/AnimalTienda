@@ -21,7 +21,6 @@ namespace Consola_1
                 Descripcion_Juguete = J.Descripcion_Juguete,
                 precio= J.precio
             };
-            //Añade al contexto
             _context.Juguete.Add(miJuguete);
             _context.SaveChanges();
             return true;

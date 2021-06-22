@@ -21,7 +21,6 @@ namespace Consola_1
                 Id_Tarjeta = animal.Id_Tarjeta,
                 Ultima_Tarjeta = animal.Ultima_Tarjeta,
             };
-            //Añade al contexto
             _context.LineaTarjetaClientes.Add(miTarCl);
             //Guarda en BBDD
             _context.SaveChanges();

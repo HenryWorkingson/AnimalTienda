@@ -21,7 +21,6 @@ namespace Consola_1
                 Id_Direccion = animal.Id_Direccion,
                 Ultima_Dir_Env = animal.Ultima_Dir_Env,
             };
-            //Añade al contexto
             _context.LineasDireccionClientes.Add(miLDC);
             //Guarda en BBDD
             _context.SaveChanges();

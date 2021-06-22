@@ -23,7 +23,6 @@ namespace Consola_1
                 descripcion = animal.descripcion,
                 precio= animal.precio
             };
-            //Añade al contexto
             _context.Animals.Add(miAnimal);
             //Guarda en BBDD
             _context.SaveChanges();

@@ -21,7 +21,6 @@ namespace Consola_1
                 Nom_Propietario = tar.Nom_Propietario,
                 FechaCadu_Tarjeta = tar.FechaCadu_Tarjeta,
             };
-            //Añade al contexto
             _context.TarjetaPagos.Add(miTar);
             //Guarda en BBDD
             _context.SaveChanges();

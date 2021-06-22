@@ -34,7 +34,6 @@ namespace Consola_1
                 password_Cliente = cliente.password_Cliente,
                 correo_Cliente = cliente.correo_Cliente,           
             };
-            //Añade al contexto
             _context.Clientes.Add(miCliente);
             //Guarda en BBDD
             _context.SaveChanges();

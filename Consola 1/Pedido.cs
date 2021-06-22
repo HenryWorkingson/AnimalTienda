@@ -29,7 +29,7 @@ namespace Consola_1
                 Id_Cliente = p.Id_Cliente,
             };
             //loadCarro(miPedido.id_Pedido);
-            //Añade al contexto
+           
             _context.Pedidos.Add(miPedido);
             //Guarda en BBDD
             _context.SaveChanges();

@@ -20,7 +20,6 @@ namespace Consola_1
                 Nombre_Raza = raza.Nombre_Raza,
                 Descripcion_Raza = raza.Descripcion_Raza,
             };
-            //Añade al contexto
             _context.Razas.Add(miRaza);
             //Guarda en BBDD
             _context.SaveChanges();

@@ -21,7 +21,6 @@ namespace Consola_1
                 Descripcion_Comida = c.Descripcion_Comida,
                 precio= c.precio
             };
-            //Añade al contexto
             _context.Comidas.Add(miComida);
             //Guarda en BBDD
             _context.SaveChanges();

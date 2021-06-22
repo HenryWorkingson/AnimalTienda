@@ -24,7 +24,6 @@ namespace Consola_1
                 PrecioProductoUnitario= c.PrecioProductoUnitario,
                 PrecioTotal = c.PrecioTotal
             };
-            //Añade al contexto
             _context.Linea_Pedidos.Add(miLinea);
             //Guarda en BBDD
             _context.SaveChanges();

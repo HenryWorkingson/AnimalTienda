@@ -22,7 +22,6 @@ namespace Consola_1
                 Descripcion_Producto = p.Descripcion_Producto,
                 Precio_Producto = p.Precio_Producto,
             };
-            //Añade al contexto
             _context.Clase_Productos.Add(miProducto);
             //Guarda en BBDD
             _context.SaveChanges();

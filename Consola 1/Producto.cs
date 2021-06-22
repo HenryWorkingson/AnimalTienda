@@ -20,13 +20,15 @@ namespace Consola_1
         }
         public bool CreateProducto(DtoProducto produc)
         {
+            AtriProduct = new List<global::Animal.AtributoProducto>();
+            CaracProduct = new List<global::Animal.CaracteristicaProducto>();
             global::Animal.Producto miProduc = new global::Animal.Producto()
             {
                 DescripcionProducto=produc.DescripcionProducto,
                 NombreProducto=produc.NombreProducto,
                 PrecioBase=produc.PrecioBase
             };
-            //Añade al contexto
+            
             _context.Productos.Add(miProduc);
             //Guarda en BBDD
             _context.SaveChanges();
