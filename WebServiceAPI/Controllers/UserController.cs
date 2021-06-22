@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace WebServiceAPI.Controllers
 {
+    //[Route("api/[controller]")]
     public class UserController : Controller
     {
         protected DatabaseContext db;

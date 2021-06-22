@@ -24,6 +24,13 @@ namespace WebServiceAPI
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
             services.AddControllersWithViews();
+
+            // Register the Swagger generator, defining 1 or more Swagger documents  
+            services.AddSwaggerGen(config =>
+                config.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Title = "Ejemplo de Swagger",
+                }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +50,21 @@ namespace WebServiceAPI
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.  
+            // Enable middleware to serve generated Swagger as a JSON endpoint.  
+            app.UseSwagger(c =>
+            {
+                c.SerializeAsV2 = true;
+            });
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),  
+            // specifying the Swagger JSON endpoint.  
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseAuthorization();
 
