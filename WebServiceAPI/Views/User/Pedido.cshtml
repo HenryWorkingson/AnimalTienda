@@ -55,7 +55,7 @@
                 @Html.DisplayFor(modelItem => item.Precio_Total)
             </td>
             <td>
-                @Html.ActionLink("Details", "LineaPedido" , new { id = item.id_Pedido }, new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "getLineaPedido" , new { id = item.id_Pedido }, new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "DeletePedido" , new { id = item.id_Pedido }, new
                 {
                     onclick = "return confirm('¿Estas seguro de que quieres borrar?')"/* id=item.PrimaryKey */
