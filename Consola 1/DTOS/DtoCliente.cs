@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Consola_1.DTOS
 {
-    class DtoCliente
+    public class DtoCliente
     {
         public string Nombre_Cliente { get; set; }
         public string Apellido_Cliente { get; set; }

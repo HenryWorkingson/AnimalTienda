@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Animal.TarjetaPago>
+
+@{
+    ViewData["Title"] = "getTarjetas";
+}
+
+<h1>getTarjetas</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id_TarjetaPago)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Numero_Tarjeta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCadu_Tarjeta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom_Propietario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id_TarjetaPago)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Numero_Tarjeta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCadu_Tarjeta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom_Propietario)
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteTarjeta",new { idTar = item.id_TarjetaPago }, new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

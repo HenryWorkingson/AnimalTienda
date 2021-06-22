@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Animal.Producto>
+
+@{
+    ViewData["Title"] = "getProducto";
+}
+
+<h1>getProducto</h1>
+
+<p>
+    <a asp-action="CreateProducto">CreateProducto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioBase)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioBase)
+            </td>
+            <td>
+                @Html.ActionLink("Añadir Carro", "AddCarro", new { idProducto = item.IdProducto }
+                    , new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "DeleteProducto", new { idProducto = item.IdProducto }, new
+                {
+                    onclick = "return confirm('¿Estas seguro de que quieres borrar?')"/* id=item.PrimaryKey */
+                })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

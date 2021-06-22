@@ -1,0 +1,58 @@
+﻿@model Animal.Direccion_Envio
+
+@{
+    ViewData["Title"] = "CrearDirecciones";
+}
+
+<h1>CrearDirecciones</h1>
+
+<h4>Direccion_Envio</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CrearDirecciones">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="id_DireccionEnvio" class="control-label"></label>
+                <input asp-for="id_DireccionEnvio" class="form-control" />
+                <span asp-validation-for="id_DireccionEnvio" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Nombre_Direccion" class="control-label"></label>
+                <input asp-for="Nombre_Direccion" class="form-control" />
+                <span asp-validation-for="Nombre_Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Provincia" class="control-label"></label>
+                <input asp-for="Provincia" class="form-control" />
+                <span asp-validation-for="Provincia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Municipal" class="control-label"></label>
+                <input asp-for="Municipal" class="form-control" />
+                <span asp-validation-for="Municipal" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DNI_Cliente_Rceiv" class="control-label"></label>
+                <input asp-for="DNI_Cliente_Rceiv" class="form-control" />
+                <span asp-validation-for="DNI_Cliente_Rceiv" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombre_Cliente_Rec" class="control-label"></label>
+                <input asp-for="Nombre_Cliente_Rec" class="form-control" />
+                <span asp-validation-for="Nombre_Cliente_Rec" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -25,12 +25,16 @@ namespace WebServiceAPI
             });
             services.AddControllersWithViews();
 
-            // Register the Swagger generator, defining 1 or more Swagger documents  
-            services.AddSwaggerGen(config =>
-                config.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+            services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
                 {
-                    Title = "Ejemplo de Swagger",
-                }));
+                    Title = " Swagger Demo API",
+                    Description = " Demo API for showing Swagger",
+                    Version = "v1"
+                });
+                
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,6 +51,13 @@ namespace WebServiceAPI
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger Demo API");
+            });
+
             app.UseStaticFiles();
 
             app.UseRouting();

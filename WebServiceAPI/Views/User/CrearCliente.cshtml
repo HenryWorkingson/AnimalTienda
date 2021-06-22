@@ -1,0 +1,58 @@
+﻿@model Animal.Cliente
+
+@{
+    ViewData["Title"] = "CrearCliente";
+}
+
+<h1>CrearCliente</h1>
+
+<h4>Cliente</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CrearCliente">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="id_Cliente" class="control-label"></label>
+                <input asp-for="id_Cliente" class="form-control" />
+                <span asp-validation-for="id_Cliente" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Nombre_Cliente" class="control-label"></label>
+                <input asp-for="Nombre_Cliente" class="form-control" />
+                <span asp-validation-for="Nombre_Cliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido_Cliente" class="control-label"></label>
+                <input asp-for="Apellido_Cliente" class="form-control" />
+                <span asp-validation-for="Apellido_Cliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="cuenta_Cliente" class="control-label"></label>
+                <input asp-for="cuenta_Cliente" class="form-control" />
+                <span asp-validation-for="cuenta_Cliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password_Cliente" class="control-label"></label>
+                <input asp-for="password_Cliente" class="form-control" />
+                <span asp-validation-for="password_Cliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="correo_Cliente" class="control-label"></label>
+                <input asp-for="correo_Cliente" class="form-control" />
+                <span asp-validation-for="correo_Cliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
