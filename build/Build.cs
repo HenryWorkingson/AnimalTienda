@@ -81,20 +81,27 @@ class Build : NukeBuild
               .SetOutput(OutputDirectory / "Test")
               .SetProjectFile(Solution)
               .SetConfiguration(Configuration)
-              .EnableNoRestore());
+              .EnableNoRestore()
+              .EnableNoBuild());
       });
+    static string GlobalToolName => "WenUI/WenUI";
     Target Pack => _ => _
         .DependsOn(Test)
         .Executes(() =>
         {
             DotNetPack(s => s
+                .SetProject(Solution)
+                //.SetProject(RootDirectory /$"{GlobalToolName}.fsproj")
                 .SetAuthors("YiDong Zhu")
                 //.SetProject(Solution.GetProject("Nuke.Sample"))
-                
-                .SetOutputDirectory(OutputDirectory / "packages"));
+                .SetIncludeSymbols(true)
+                .SetConfiguration(Configuration)
+                .EnableNoRestore()
+                .EnableNoBuild()
+                .SetOutputDirectory(OutputDirectory / "package"));
         });
 
-    string PackagesDirectory => OutputDirectory / "packages";
+    string PackagesDirectory => OutputDirectory / "package";
     Target Push => _ => _
        .DependsOn(Pack)
        .Requires(() => MyApiKey) //Configuration.Equals(Configuration.Release))
